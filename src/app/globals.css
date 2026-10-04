@@ -1,44 +1,69 @@
 @import "tailwindcss";
 
 @theme {
-  --color-blush: #f8c8d0;
-  --color-peach: #ffd8be;
-  --color-cream: #fff8f0;
-  --color-gold: #c9a24d;
-  --color-gold-light: #e8cf8a;
-  --color-rose: #d9667b;
-  --color-wine: #7a2a3a;
-  --font-script: var(--font-great-vibes);
+  /* Colours of the day (Pantone 222 / 2405 / 224 / 8024 + lilac statice) */
+  --color-plum: #6c1d45;
+  --color-magenta: #a3307e;
+  --color-mauve: #c2588f;
+  --color-pink: #d98cb8;
+  --color-leaf: #6e8b3d;
+  --color-lilac: #b9a2e3;
+  --color-lavender: #d9c9f2;
+  --color-blush: #f2c6dd;
+  --color-cream: #fcf5f9;
+  --font-script: var(--font-dancing);
   --font-serif: var(--font-playfair);
-  --font-sans: var(--font-poppins);
+  --font-sans: var(--font-montserrat);
 }
 
 html {
-  background: #fff8f0;
+  background: #fcf5f9;
 }
 
 body {
-  background: linear-gradient(-45deg, #fff8f0, #ffe4ea, #fff1e0, #fde2f0);
-  background-size: 400% 400%;
-  animation: bg-shift 18s ease infinite;
-  color: #5b2333;
+  background: linear-gradient(180deg, #fcf5f9 0%, #f6e8f2 40%, #efe8fa 75%, #fcf5f9 100%);
+  color: #4a1430;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-@keyframes bg-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Soft drifting colour glows behind everything (transform-only, so no full-page repaints) */
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+  animation: drift 26s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(6vw, 4vh, 0) scale(1.12); }
+  100% { transform: translate3d(-4vw, -3vh, 0) scale(0.95); }
 }
 
-.gold-text {
-  background: linear-gradient(110deg, #a8802f 0%, #e8cf8a 25%, #c9a24d 45%, #fff3c4 55%, #c9a24d 70%, #a8802f 100%);
+/* Frosted card. Blur only on larger screens: it is expensive on phones. */
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 249, 253, 0.88));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 24px 50px -24px rgba(108, 29, 69, 0.35),
+    0 0 0 1px rgba(163, 48, 126, 0.08);
+}
+@media (min-width: 640px) {
+  .card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 249, 253, 0.7));
+    backdrop-filter: blur(10px);
+  }
+}
+
+.shimmer-text {
+  /* Deep plum → magenta with a narrow soft-pink glint, so names stay bold and readable mid-shimmer. */
+  background: linear-gradient(110deg, #6c1d45 0%, #8e2a5a 25%, #a3307e 42%, #d98cb8 50%, #a3307e 58%, #6c1d45 80%, #6c1d45 100%);
   background-size: 250% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer 4s linear infinite;
+  animation: shimmer 5s linear infinite;
+  filter: drop-shadow(0 2px 6px rgba(108, 29, 69, 0.18));
 }
 
 @keyframes shimmer {
@@ -48,12 +73,12 @@ body {
 .paper {
   background:
     radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.9), transparent 60%),
-    linear-gradient(180deg, #fffdf9, #fff6ec);
+    linear-gradient(180deg, #fffcfe, #fbf1f7);
 }
 
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 
 @media (prefers-reduced-motion: reduce) {
-  body, .gold-text { animation: none; }
+  .glow, .shimmer-text { animation: none; }
 }

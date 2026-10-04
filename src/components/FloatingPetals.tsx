@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 type Petal = { left: number; size: number; duration: number; delay: number; drift: number; hue: string; kind: "petal" | "dot" };
 
-const hues = ["#f4a7b9", "#f8c8d0", "#ffd8be", "#e98ba3", "#e8cf8a", "#fbd3dd"];
+const hues = ["#d98cb8", "#f2c6dd", "#d9c9f2", "#8e2a5a", "#b9a2e3", "#f5d3e6", "#7f9c4a"];
 
-/** Petals and gold flecks drifting down the whole page. Generated on the client to avoid hydration mismatch. */
+/** Petals, leaves and sparkles drifting down the whole page. Generated on the client to avoid hydration mismatch. */
 export default function FloatingPetals() {
   const [petals, setPetals] = useState<Petal[]>([]);
 

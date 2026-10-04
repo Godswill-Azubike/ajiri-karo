@@ -4,10 +4,10 @@ Animated wedding invitation site (Next.js + Framer Motion + confetti).
 
 ## Edit the details
 Everything lives in `src/config/wedding.ts`: names, date/time, venues, map links, love story,
-dress-code colours, gift details, gallery photos and music.
+dress-code colours (Pantone 222 / 2405 / 224 / 8024 + lilac), gift details, gallery photos and music.
 
 - **Photos:** put them in `public/images/gallery/` and list them in `gallery`, e.g. `"/images/gallery/1.jpg"`.
-- **Music:** put your song at `public/music/song.mp3` (or set `music: ""` to hide the button).
+- **Music:** plays from YouTube. Change `music.youtubeId` to any video ID (the part after `watch?v=`); the video must allow embedding. Set it to `""` to hide the music button.
 
 ## Run locally
     npm install

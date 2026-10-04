@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { wedding } from "@/config/wedding";
-import { burst } from "./confetti";
+import { sparkle } from "./confetti";
 import SectionTitle from "./SectionTitle";
 import { FlowerCorner } from "./Flowers";
 
@@ -24,7 +24,7 @@ function Tile({ label, value }: { label: string; value: number }) {
       variants={{ hidden: { opacity: 0, y: 40, rotate: -8 }, show: { opacity: 1, y: 0, rotate: 0 } }}
       className="flex flex-col items-center"
     >
-      <div className="relative flex h-20 w-[4.5rem] items-center justify-center overflow-hidden rounded-2xl bg-white/80 shadow-lg ring-2 ring-gold/40 backdrop-blur sm:h-28 sm:w-28">
+      <div className="relative flex h-20 w-[4.5rem] items-center justify-center overflow-hidden card rounded-2xl sm:h-28 sm:w-28">
         <div className="absolute inset-x-0 top-1/2 h-px bg-blush" />
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.span
@@ -33,13 +33,13 @@ function Tile({ label, value }: { label: string; value: number }) {
             animate={{ y: "0%", opacity: 1, rotateX: 0 }}
             exit={{ y: "100%", opacity: 0, rotateX: -90 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="font-serif text-3xl font-bold text-rose sm:text-5xl"
+            className="font-serif text-3xl font-bold text-mauve sm:text-5xl"
           >
             {text}
           </motion.span>
         </AnimatePresence>
       </div>
-      <span className="mt-2 text-xs tracking-[0.25em] text-wine/80 uppercase">{label}</span>
+      <span className="mt-2 text-xs tracking-[0.25em] text-plum/80 uppercase">{label}</span>
     </motion.div>
   );
 }
@@ -58,7 +58,7 @@ export default function Countdown() {
   const isToday = time !== null && Object.values(time).every((v) => v === 0);
 
   return (
-    <section className="relative overflow-hidden px-4 py-24">
+    <section className="relative overflow-hidden px-5 py-20 sm:py-28">
       <FlowerCorner position="tl" />
       <FlowerCorner position="br" />
       <SectionTitle kicker="Counting down" title="Until We Say I Do" />
@@ -66,16 +66,16 @@ export default function Countdown() {
         className="relative z-10 mx-auto flex max-w-2xl justify-center gap-3 sm:gap-6"
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.6 }}
+        viewport={{ once: false, amount: 0.6 }}
         transition={{ staggerChildren: 0.12 }}
-        onViewportEnter={() => burst({ x: 0.5, y: 0.6 })}
+        onViewportEnter={() => sparkle({ x: 0.5, y: 0.55 })}
       >
         {Object.entries(t).map(([label, value]) => (
           <Tile key={label} label={label} value={value} />
         ))}
       </motion.div>
       {isToday && (
-        <p className="relative z-10 mt-8 text-center font-script text-4xl text-rose">Today is the day! 🎉</p>
+        <p className="relative z-10 mt-8 text-center font-script text-4xl font-semibold text-mauve">Today is the day! 🎉</p>
       )}
     </section>
   );
