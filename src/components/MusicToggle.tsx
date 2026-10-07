@@ -5,12 +5,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { wedding } from "@/config/wedding";
 import { OPEN_EVENT } from "./EnvelopeHero";
 
-// Minimal typings for the YouTube IFrame API.
+// Minimal typings for the YouTube IFrame API (only what this component uses).
 type YTPlayer = {
   playVideo(): void;
   pauseVideo(): void;
   nextVideo(): void;
   cuePlaylist(opts: { playlist: string[]; index?: number }): void;
+  destroy(): void;
   setVolume(volume: number): void;
   setLoop(loop: boolean): void;
   unMute(): void;
@@ -154,6 +155,11 @@ export default function MusicToggle() {
       window.removeEventListener("pointerdown", tryPlay);
       window.removeEventListener("touchend", tryPlay);
       window.removeEventListener("keydown", tryPlay);
+      // YouTube swaps `el` for its own iframe, so destroy the player itself; otherwise a remount
+      // (e.g. a dev hot-reload) leaves the old iframe playing underneath the new one.
+      player.current?.destroy();
+      player.current = null;
+      ready.current = false;
       el.remove();
     };
   }, [playlist, shuffle]);
