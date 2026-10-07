@@ -26,12 +26,31 @@ const montserrat = localFont({
   display: "swap",
 });
 
+// Share previews (WhatsApp etc.) need absolute image URLs. On Vercel the production domain is detected
+// automatically; set NEXT_PUBLIC_SITE_URL (e.g. https://ajiriandkaro.com) if you add a custom domain.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
+
+const shareTitle = `${wedding.bride} & ${wedding.groom} are getting married 💍`;
+const shareDescription = `You're invited! Join us on ${wedding.displayDate} in ${wedding.city}. Tap to open your invitation 💌 ${wedding.hashtag}`;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: `${wedding.bride} & ${wedding.groom} — We're Getting Married!`,
-  description: `Join us on ${wedding.displayDate} in ${wedding.city}. ${wedding.hashtag}`,
+  description: shareDescription,
   openGraph: {
-    title: `${wedding.bride} & ${wedding.groom} are getting married 💍`,
-    description: `${wedding.displayDate} · ${wedding.city}`,
+    type: "website",
+    url: "/",
+    siteName: `${wedding.bride} & ${wedding.groom}`,
+    title: shareTitle,
+    description: shareDescription,
+    locale: "en_NG",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: shareTitle,
+    description: shareDescription,
   },
 };
 
