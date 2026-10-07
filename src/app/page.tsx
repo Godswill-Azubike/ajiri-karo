@@ -12,11 +12,13 @@ import Ambience from "@/components/Ambience";
 import Divider from "@/components/Divider";
 import LoveBirds from "@/components/LoveBirds";
 import RingsClink from "@/components/RingsClink";
+import WelcomeGate from "@/components/WelcomeGate";
 
 export default function Home() {
   return (
     <main className="relative overflow-x-clip">
       <SmoothScroll />
+      <WelcomeGate />
       <Ambience />
       <FloatingPetals />
       <LoveBirds />

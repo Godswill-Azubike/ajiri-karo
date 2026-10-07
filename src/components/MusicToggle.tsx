@@ -74,6 +74,7 @@ export default function MusicToggle() {
   const songs = useRef<Song[]>(playlist);
   const ready = useRef(false);
   const userPaused = useRef(false);
+  const wantPlay = useRef(false);
   const [playing, setPlaying] = useState(false);
   const [title, setTitle] = useState("");
   const playingRef = useRef(false);
@@ -115,6 +116,12 @@ export default function MusicToggle() {
             if (e.data === YT.PlayerState.CUED && !ready.current) {
               ready.current = true;
               player.current?.setLoop(true); // repeat the whole list forever
+              // The guest already tapped while the player was still loading: start now.
+              // (Browsers keep allowing sound once the visitor has interacted with the page.)
+              if (wantPlay.current && !userPaused.current) {
+                player.current?.unMute();
+                player.current?.playVideo();
+              }
             } else if (e.data === YT.PlayerState.PLAYING) {
               setPlaying(true);
               setTitle(currentTitle());
@@ -130,18 +137,22 @@ export default function MusicToggle() {
 
     // Browsers only allow sound after a tap/click/key, so start on the envelope opening or the first interaction.
     const tryPlay = () => {
-      if (userPaused.current || !ready.current || playingRef.current) return;
+      if (userPaused.current || playingRef.current) return;
+      wantPlay.current = true;
+      if (!ready.current) return; // played as soon as the player is ready (see CUED above)
       player.current?.unMute();
       player.current?.playVideo();
     };
     window.addEventListener(OPEN_EVENT, tryPlay);
     window.addEventListener("pointerdown", tryPlay);
+    window.addEventListener("touchend", tryPlay);
     window.addEventListener("keydown", tryPlay);
 
     return () => {
       cancelled = true;
       window.removeEventListener(OPEN_EVENT, tryPlay);
       window.removeEventListener("pointerdown", tryPlay);
+      window.removeEventListener("touchend", tryPlay);
       window.removeEventListener("keydown", tryPlay);
       el.remove();
     };
