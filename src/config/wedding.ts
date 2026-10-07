@@ -28,17 +28,17 @@ export const wedding = {
     // },
     {
       title: "Church Ceremony",
-      date: "Saturday, 17th December 2026",
+      date: "Saturday, 19th December 2026",
       time: "10:00 AM",
-      venue: "St. Example Cathedral",
+      venue: "St Andrew’s Anglican Cathedral",
       address: "22 Okere Rd, Agbasa Warri",
       icon: "church",
     },
     {
       title: "Reception",
-      date: "Saturday, 17th December 2026",
+      date: "Saturday, 19th December 2026",
       time: "2:00 PM",
-      venue: "The Grand Ballroom",
+      venue: "MBB Event",
       address: "Km 2 Refinery Rd, Effurun, Warri",
       icon: "reception",
     },
@@ -48,7 +48,7 @@ export const wedding = {
   mapRegion: "Delta State, Nigeria",
 
   story: [
-    { year: "2019", title: "First Hello", text: "We met at a friend's birthday party and talked until the music stopped." },
+    { year: "2019", title: "First Hello", text: "We met on instagram and started talking for a while" },
     { year: "2020", title: "First Date", text: "Suya, laughter, and a walk that lasted way longer than planned." },
     { year: "2023", title: "Growing Together", text: "Through every season we chose each other, again and again." },
     { year: "2026", title: "The Proposal", text: "One knee, one ring, one very happy YES!" },
@@ -57,10 +57,10 @@ export const wedding = {
   dressCode: {
     note: "Our colours of the day are plum, magenta, mauve pink and leaf green, with a touch of lilac. Come dressed in any of them!",
     colors: [
-      { name: "Plum", hex: "#6C1D45", pantone: "Pantone 222" },
+      // { name: "Plum", hex: "#6C1D45", pantone: "Pantone 222" },
       { name: "Magenta", hex: "#A3307E", pantone: "Pantone 2405" },
       { name: "Mauve Pink", hex: "#D98CB8", pantone: "Pantone 224" },
-      { name: "Leaf Green", hex: "#6E8B3D", pantone: "Pantone 8024" },
+      // { name: "Leaf Green", hex: "#6E8B3D", pantone: "Pantone 8024" },
       { name: "Lilac", hex: "#B9A2E3", pantone: "Accent" },
     ],
   },
@@ -86,9 +86,9 @@ export const wedding = {
   gifts: {
     note: "Your presence is the greatest gift. If you'd like to bless us further, here are the details:",
     accounts: [
-      { label: "Bank", value: "Example Bank" },
-      { label: "Account Name", value: "Ajiri & Karo" },
-      { label: "Account Number", value: "0123456789", copy: true },
+      { label: "Bank", value: "OPay" },
+      { label: "Account Name", value: "Ajirioghene Attah-Christian" },
+      { label: "Account Number", value: "7052430130", copy: true },
     ],
   },
 

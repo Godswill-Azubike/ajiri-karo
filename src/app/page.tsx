@@ -3,7 +3,6 @@ import Countdown from "@/components/Countdown";
 import OurStory from "@/components/OurStory";
 import Events from "@/components/Events";
 import DressCode from "@/components/DressCode";
-import Gallery from "@/components/Gallery";
 import Gifts from "@/components/Gifts";
 import Footer from "@/components/Footer";
 import FloatingPetals from "@/components/FloatingPetals";
@@ -30,8 +29,6 @@ export default function Home() {
       <Events />
       <Divider />
       <DressCode />
-      <Divider />
-      <Gallery />
       <Divider />
       <Gifts />
       <Footer />
