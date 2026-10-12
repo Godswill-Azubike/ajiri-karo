@@ -48,20 +48,19 @@ export const wedding = {
   mapRegion: "Delta State, Nigeria",
 
   story: [
-    { year: "2019", title: "First Hello", text: "We met on instagram and started talking for a while" },
-    { year: "2020", title: "First Date", text: "Suya, laughter, and a walk that lasted way longer than planned." },
-    { year: "2023", title: "Growing Together", text: "Through every season we chose each other, again and again." },
-    { year: "2026", title: "The Proposal", text: "One knee, one ring, one very happy YES!" },
+    { year: "2022", title: "First Hello", text: "We met on Instagram and started talking for a while." },
+    { year: "2024", title: "Started Dating", text: "Everyday talk, laughter and connection that lasted way longer than planned." },
+    { year: "2025", title: "Growing Together", text: "Through every season, we choose each other again and again." },
+    { year: "2026", title: "Proposal", text: "One knee, one ring, one very happy YES!" },
   ],
 
   dressCode: {
-    note: "Our colours of the day are plum, magenta, mauve pink and leaf green, with a touch of lilac. Come dressed in any of them!",
+    note: "Our colours of the day are purple, lilac, mauve and burgundy. Come dressed in any of them!",
     colors: [
-      // { name: "Plum", hex: "#6C1D45", pantone: "Pantone 222" },
-      { name: "Magenta", hex: "#A3307E", pantone: "Pantone 2405" },
-      { name: "Mauve Pink", hex: "#D98CB8", pantone: "Pantone 224" },
-      // { name: "Leaf Green", hex: "#6E8B3D", pantone: "Pantone 8024" },
-      { name: "Lilac", hex: "#B9A2E3", pantone: "Accent" },
+      { name: "Purple", hex: "#6B2C91" },
+      { name: "Lilac", hex: "#B9A2E3" },
+      { name: "Mauve", hex: "#B784A7" },
+      { name: "Burgundy", hex: "#800020" },
     ],
   },
 

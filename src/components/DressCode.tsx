@@ -28,7 +28,7 @@ export default function DressCode() {
         {wedding.dressCode.colors.map((c, i) => (
           <motion.div
             key={c.name}
-            className="flex w-[6.4rem] flex-col items-center text-center whitespace-nowrap sm:w-36"
+            className="flex w-[9rem] flex-col items-center text-center whitespace-nowrap sm:w-36"
             variants={{ hidden: { opacity: 0, scale: 0, rotate: -120 }, show: { opacity: 1, scale: 1, rotate: 0 } }}
             transition={{ type: "spring", stiffness: 90, damping: 10 }}
           >
@@ -40,7 +40,9 @@ export default function DressCode() {
               whileHover={{ scale: 1.15 }}
             />
             <span className="mt-3 text-[0.7rem] tracking-[0.14em] text-plum uppercase sm:text-sm sm:tracking-[0.18em]">{c.name}</span>
-            <span className="mt-0.5 text-[0.6rem] tracking-[0.12em] text-mauve uppercase sm:text-[0.65rem]">{c.pantone}</span>
+            {"pantone" in c && typeof c.pantone === "string" && (
+              <span className="mt-0.5 text-[0.6rem] tracking-[0.12em] text-mauve uppercase sm:text-[0.65rem]">{c.pantone}</span>
+            )}
           </motion.div>
         ))}
       </motion.div>
