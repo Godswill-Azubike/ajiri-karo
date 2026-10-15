@@ -21,7 +21,7 @@ export const wedding = {
     // {
     //   title: "Traditional Wedding",
     //   date: "Friday, 16th December 2026",
-    //   time: "12:00 PM",
+    //   time: "11:00 PM",
     //   venue: "The Garden Event Centre",
     //   address: "12 Example Road, Lekki, Lagos",
     //   icon: "traditional",
@@ -37,7 +37,7 @@ export const wedding = {
     {
       title: "Reception",
       date: "Saturday, 19th December 2026",
-      time: "2:00 PM",
+      time: "1:00 PM",
       venue: "MBB Event",
       address: "Km 2 Refinery Rd, Effurun, Warri",
       icon: "reception",
